@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Chaser Game - Project Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 24px;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 24px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .demo-link {
+            display: inline-block;
+            background: #2ed573;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .demo-link:hover {
+            background: #26d467;
+            transform: scale(1.05);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        footer {
+            background: #2d2d2d;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .game-preview {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .game-preview img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Mouse Chaser Game</h1>
+            <p>An Interactive Browser-Based Survival Game</p>
+        </header>
+
+        <div class="content">
+            <section>
+                <h2>Project Overview</h2>
+                <p>
+                    <strong>Mouse Chaser</strong> is a simple yet engaging browser-based game built entirely with vanilla web technologies. 
+                    The game challenges players to keep their mouse cursor away from a pursuing chaser for as long as possible. 
+                    As time progresses, the chaser's speed increases, creating an escalating difficulty curve that makes each 
+                    playthrough more intense.
+                </p>
+                <div class="game-preview">
+                    <a href="index.html" class="demo-link">🎯 Play the Game</a>
+                    <p style="margin-top: 15px;">
+                        <strong>Live Demo:</strong> 
+                        <a href="https://rootlake.github.io/mousechaser/" target="_blank" style="color: #667eea;">
+                            https://rootlake.github.io/mousechaser/
+                        </a>
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Key Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🎯 Real-Time Tracking</h4>
+                        <p>The chaser follows your mouse cursor position with smooth, responsive movement.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚡ Progressive Difficulty</h4>
+                        <p>Speed multiplier increases every 10 seconds, making the game progressively challenging.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⏱️ Live Timer</h4>
+                        <p>Real-time display of survival time with precision to hundredths of a second.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Speed Indicator</h4>
+                        <p>Visual feedback showing current speed multiplier for transparency.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💥 Collision Detection</h4>
+                        <p>Accurate distance-based collision detection using Euclidean distance calculations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔄 Restart Functionality</h4>
+                        <p>Seamless game restart without page reload for continuous gameplay.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Technical Implementation</h2>
+                
+                <h3>Technology Stack</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript (ES6+)</span>
+                    <span class="tech-badge">GitHub Pages</span>
+                </div>
+
+                <h3>Core Algorithms</h3>
+                <p><strong>Movement Calculation:</strong></p>
+                <div class="code-block">
+// Vector-based movement algorithm
+const dx = mouseX - chaserX;
+const dy = mouseY - chaserY;
+const distance = Math.sqrt(dx * dx + dy * dy);
+const speed = baseSpeed * speedMultiplier;
+chaserX += (dx / distance) * speed;
+chaserY += (dy / distance) * speed;
+                </div>
+
+                <p><strong>Collision Detection:</strong></p>
+                <div class="code-block">
+// Euclidean distance calculation
+const distance = Math.sqrt(
+    Math.pow(chaserX - cursorX, 2) + 
+    Math.pow(chaserY - cursorY, 2)
+);
+return distance < collisionThreshold;
+                </div>
+
+                <p><strong>Speed Progression:</strong></p>
+                <div class="code-block">
+// Time-based speed multiplier
+speedMultiplier = 1.0 + (elapsedTime / 10);
+                </div>
+
+                <h3>Performance Optimizations</h3>
+                <ul>
+                    <li><span class="highlight">requestAnimationFrame</span> for smooth 60fps animations</li>
+                    <li>Efficient event handling with single mousemove listener</li>
+                    <li>CSS transforms for hardware-accelerated positioning</li>
+                    <li>Minimal DOM manipulation for optimal performance</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Game Statistics</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="number">0</div>
+                        <div class="label">External Dependencies</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">256</div>
+                        <div class="label">Lines of Code</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">60</div>
+                        <div class="label">FPS Target</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">100%</div>
+                        <div class="label">Vanilla JavaScript</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>How to Play</h2>
+                <ol>
+                    <li>Open the game in a web browser</li>
+                    <li>Move your mouse cursor around the screen</li>
+                    <li>Avoid the <strong style="color: #ff4757;">red chaser</strong> circle</li>
+                    <li>Watch your survival time increase</li>
+                    <li>Monitor the speed multiplier as difficulty increases</li>
+                    <li>When caught, view your final time and restart to try again!</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Project Structure</h2>
+                <div class="code-block">
+mousechaser/
+├── index.html              # Main game file (HTML, CSS, JS)
+├── presentation.html       # This presentation page
+├── README.md              # Project documentation
+├── LICENSE                # MIT License
+└── .github/
+    └── workflows/
+        └── deploy.yml     # GitHub Pages deployment
+                </div>
+            </section>
+
+            <section>
+                <h2>Deployment</h2>
+                <p>
+                    The game is automatically deployed to <strong>GitHub Pages</strong> using GitHub Actions. 
+                    Every push to the main branch triggers an automatic deployment, ensuring the live version 
+                    is always up-to-date with the latest code.
+                </p>
+                <p>
+                    <strong>Live URL:</strong> 
+                    <a href="https://rootlake.github.io/mousechaser/" target="_blank" style="color: #667eea;">
+                        https://rootlake.github.io/mousechaser/
+                    </a>
+                </p>
+            </section>
+
+            <section>
+                <h2>Learning Outcomes</h2>
+                <ul>
+                    <li>Understanding of DOM manipulation and event handling</li>
+                    <li>Implementation of game loops using requestAnimationFrame</li>
+                    <li>Vector mathematics for movement and collision detection</li>
+                    <li>CSS animations and transitions for visual polish</li>
+                    <li>Git workflow and GitHub Pages deployment</li>
+                    <li>Single-file application architecture</li>
+                </ul>
+            </section>
+        </div>
+
+        <footer>
+            <p style="font-size: 20px; margin-bottom: 10px;">Mouse Chaser Game</p>
+            <p>Built with HTML, CSS, and JavaScript</p>
+            <p style="margin-top: 15px; opacity: 0.8;">
+                <a href="https://github.com/rootlake/mousechaser" target="_blank" style="color: #2ed573;">
+                    View on GitHub
+                </a> | 
+                <a href="index.html" style="color: #2ed573;">Play Game</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
